@@ -3,7 +3,12 @@
 
 SQL code that addresses the following:
 
-1. List the employee number, last name, first name, sex, and salary of each employee 
+1. List the employee number, last name, first name, sex, and salary of each employee
+
+<img width="1512" alt="1  List the employee number, last name, first name, sex, and salary of each employee " src="https://github.com/funkyguitar/sql-challenge/assets/104698553/c1936485-73e8-489a-8516-2898b7e0bf4d">
+
+
+
 2. List the first name, last name, and hire date for the employees who were hired in 1986 
 3. List the manager of each department along with their department number, department name, employee number, last name, and first name 
 4. List the department number for each employee along with that employee’s employee number, last name, first name, and department name 
