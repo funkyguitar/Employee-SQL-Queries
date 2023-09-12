@@ -8,6 +8,19 @@ inner join "Salaries"
 on "employees".emp_no = "Salaries".emp_no
 ;
 
+-- Change hire_date and birth_date columns to TIMESTAMP datatype
+-- For hire_date column
+ALTER TABLE employees
+ALTER COLUMN hire_date TYPE TIMESTAMP USING TO_TIMESTAMP(hire_date, 'MM/DD/YYYY');
+
+-- For birth_date column
+ALTER TABLE employees
+ALTER COLUMN birth_date TYPE TIMESTAMP USING TO_TIMESTAMP(birth_date, 'MM/DD/YYYY');
+
+--Verify change to to TIMESTAMP datatype
+SELECT column_name, data_type
+FROM information_schema.columns
+WHERE table_name = 'employees' AND column_name IN ('hire_date', 'birth_date');
 
 -- List the first name, last name, and hire date for the employees who were hired in 1986.
 
@@ -15,7 +28,6 @@ select first_name, last_name, hire_date
 from employees
 where hire_date LIKE '%1986'
 ;
-
 
 -- List the manager of each department along with their department number, department name, employee number, last name, and first name.
 SELECT "Departments".dept_no, "Departments".dept_name, "Dept_Manager".emp_no, employees.last_name, employees.first_name
@@ -44,7 +56,7 @@ where first_name = 'Hercules' AND last_name LIKE 'B%'
 
 -- List each employee in the Sales department, including their employee number, last name, and first name.
 
-SELECT d.dept_name, e.last_name, e.first_name, e.emp_no
+SELECT DISTINCT d.dept_name, e.last_name, e.first_name, e.emp_no
 FROM "Departments" as d
 INNER JOIN "Dept_Emp" as de 
 ON de.dept_no = d.dept_no
@@ -55,7 +67,7 @@ WHERE dept_name = 'Sales'
 
 -- List each employee in the Sales and Development departments, including their employee number, last name, first name, and department name.
 
-SELECT d.dept_name, e.emp_no, e.last_name, e.first_name
+SELECT DISTINCT d.dept_name, e.emp_no, e.last_name, e.first_name
 FROM employees AS e
 INNER JOIN "Dept_Emp" AS de
 ON e.emp_no = de.emp_no
@@ -64,15 +76,9 @@ ON d.dept_no = de.dept_no
 WHERE dept_name IN ('Sales', 'Development')
 ;
 
--- List the frequency counts, in descending order, of all the employee last names (that is, how many employees share each last name).
+-- List the frequency counts, in descending order, of all the employee last names (employees who share each last name).
 SELECT last_name, COUNT(last_name) AS "Last Name"
 from employees
 GROUP BY last_name
 ORDER BY "last_name" DESC
-;
-
-SELECT last_name, COUNT(last_name) AS "Name Count"
-from employees
-GROUP BY last_name
-ORDER BY "Name Count" DESC
 ;
