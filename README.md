@@ -1,4 +1,4 @@
-SQL code that performs the following searches, with some screenshots:
+SQL code that performs the following searches using simulated data, with some screenshots:
 
 1. List the employee number, last name, first name, sex, and salary of each employee
 
