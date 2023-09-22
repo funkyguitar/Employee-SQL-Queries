@@ -1,7 +1,4 @@
-SQL code that performs searches of simulated data contained in multiple CSV files of company employee names, department information, and salary.  
-
-
-, with some screenshots:
+This repository contains SQL code designed to perform searches and analysis on simulated company data. The dataset comprises multiple CSV files, each containing information about company employees, including their names, department assignments, and salary details.
 
 1. List the employee number, last name, first name, sex, and salary of each employee
 
